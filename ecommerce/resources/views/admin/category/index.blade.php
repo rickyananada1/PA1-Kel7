@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h4>Category Pages</h4>
+        <h4>Products Pages</h4>
         <hr>
     </div>
     <div class="card-body">
@@ -13,6 +13,7 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>Selling Price</th>
                     <th>Image</th>
                     <th>Action</th>
                 </tr>
@@ -23,6 +24,7 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->description}}</td>
+                    <td>{{$item->selling_price}}</td>
                     <td>
                         <img src="{{asset('assets/uploads/category/'.$item->image)}}" alt="Image here" class="cate-image">
                     </td>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h4>Add Category</h4>
+        <h4>Add Products</h4>
     </div>
     <div class="card-body">
         <form action="{{ url('insert-category') }}" method="POST" enctype="multipart/form-data">
@@ -28,6 +28,14 @@
                 <div class="col-md-6 mb-3">
                     <label for="">Popular</label>
                     <input type="checkbox" name="popular">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Selling Price</label>
+                    <input type="number" class="form-control" name="selling_price">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Quantity</label>
+                    <input type="number" class="form-control" name="qty">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Meta Title</label>

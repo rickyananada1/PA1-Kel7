@@ -18,9 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longText('description');
+            $table->string('selling_price');
             $table->tinyInteger('status')->default('0');
             $table->tinyInteger('popular')->default('0');
             $table->string('image');
+            $table->string('qty');
             $table->string('meta_title');
             $table->string('meta_descrip');
             $table->string('meta_keyword');

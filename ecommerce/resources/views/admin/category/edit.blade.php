@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h4>Edit/Update Category</h4>
+        <h4>Edit/Update Products</h4>
     </div>
     <div class="card-body">
         <form action="{{ url('update-category/'.$category->id) }}" method="POST" enctype="multipart/form-data">
@@ -29,6 +29,14 @@
                 <div class="col-md-6 mb-3">
                     <label for="">Popular</label>
                     <input type="checkbox" {{$category->popular=="1" ? 'checked':''}} name="popular">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Selling Price</label>
+                    <input type="number" value="{{$category->selling_price}}" class="form-control" name="selling_price">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Quantity</label>
+                    <input type="number" value="{{$category->qty}}" class="form-control" name="qty">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Meta Title</label>

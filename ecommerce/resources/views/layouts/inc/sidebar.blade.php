@@ -18,13 +18,13 @@
             <li class="nav-item {{ Request::is('categories') ? 'active' :''}}">
                 <a class="nav-link" href="{{url('categories')}}">
                     <i class="material-icons">person</i>
-                    <p>Categories</p>
+                    <p>Products</p>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('add-category') ? 'active' :''}}">
                 <a class="nav-link" href="{{url('add-category')}}">
                     <i class="material-icons">person</i>
-                    <p>Add Category</p>
+                    <p>Add Products</p>
                 </a>
             </li>
             <li class="nav-item ">
