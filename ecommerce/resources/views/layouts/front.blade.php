@@ -28,12 +28,11 @@
         @yield('content')
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
+    <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/sweetalert.min.js') }}"></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if(session('status'))
     <script>
         swal("{{session('status')}}");
