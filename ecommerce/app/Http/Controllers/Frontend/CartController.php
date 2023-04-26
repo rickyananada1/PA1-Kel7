@@ -50,7 +50,10 @@ class CartController extends Controller
                 $cart = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $cart->prod_qty =  $product_qty;
                 $cart->update();
-                return response()->json(['status' => "Quantity updated"]);
+                return response()->json([
+                    'status' => "Quantity updated",
+                    'qty' => $product_qty
+                ]);
             }
         }
     }

@@ -41,7 +41,7 @@ My Cart
                     </div>
                 </div>
                 <div class="col-md-2 my-auto">
-                    <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>Remove</button>
+                    <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i> Remove</button>
                 </div>
             </div>
             @php $total += $item->category->selling_price*$item->prod_qty; @endphp

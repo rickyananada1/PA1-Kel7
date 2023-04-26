@@ -88,7 +88,6 @@ $(document).ready(function () {
 
     $(".changeQuantity").click(function (e) {
         e.preventDefault();
-
         var prod_id = $(this).closest(".product_data").find(".prod_id").val();
         var qty = $(this).closest(".product_data").find(".qty-input").val();
         data = {
@@ -100,8 +99,46 @@ $(document).ready(function () {
             url: "update-cart",
             data: data,
             success: function (response) {
-                window.location.reload();
+                // window.location.reload();
             },
         });
+    });
+});
+
+$(".decrement-btn").on("click", function (e) {
+    e.preventDefault();
+    var prod_id = $(this).closest(".col-md-3").find(".prod_id").val();
+    var prod_qty = Number($(this).siblings(".qty-input").val());
+    prod_qty--;
+    data = {
+        prod_id: prod_id,
+        prod_qty: prod_qty,
+    };
+    $.ajax({
+        method: "POST",
+        url: "update-cart",
+        data: data,
+        success: function (response) {
+            $(this).siblings(".qty-input").val(response.qty);
+        },
+    });
+});
+
+$(".increment-btn").on("click", function (e) {
+    e.preventDefault();
+    var prod_id = $(this).closest(".col-md-3").find(".prod_id").val();
+    var prod_qty = Number($(this).siblings(".qty-input").val());
+    prod_qty++;
+    data = {
+        prod_id: prod_id,
+        prod_qty: prod_qty,
+    };
+    $.ajax({
+        method: "POST",
+        url: "update-cart",
+        data: data,
+        success: function (response) {
+            $(this).siblings(".qty-input").val(response.qty);
+        },
     });
 });
