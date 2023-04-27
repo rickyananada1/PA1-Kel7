@@ -33,18 +33,21 @@ My Cart
                 </div>
                 <div class="col-md-3">
                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                    @if($item->Category->qty > $item->prod_qty)
                     <label for="Quantity">Quantity</label>
                     <div class="input-group text-center mb-3" style="width:138px;">
                         <button class="input-group-text changeQuantity decrement-btn">-</button>
                         <input type="text" name="quantity " class="form-control qty-input text-center" value="{{ $item->prod_qty }}">
                         <button class="input-group-text changeQuantity increment-btn">+</button>
                     </div>
+                    @php $total += $item->category->selling_price*$item->prod_qty; @endphp
+                    @endif
                 </div>
                 <div class="col-md-2 my-auto">
                     <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i> Remove</button>
                 </div>
             </div>
-            @php $total += $item->category->selling_price*$item->prod_qty; @endphp
+
             @endforeach
         </div>
         <div class="card-footer">
