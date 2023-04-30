@@ -53,37 +53,37 @@ Checkout
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-5">
-            <div class="card">
-                <div class="card-body">
-                    <h6>Order Details</h6>
-                    <hr>
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($cartitems as $item)
-                            <tr>
-                                <td> {{ $item->category->name }}</td>
-                                <td> {{ $item->prod_qty}}</td>
-                                <td>Rp {{ $item->category->selling_price }}</td>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h6>Order Details</h6>
+                        <hr>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($cartitems as $item)
+                                <tr>
+                                    <td> {{ $item->category->name }}</td>
+                                    <td> {{ $item->prod_qty}}</td>
+                                    <td>Rp {{ $item->category->selling_price }}</td>
 
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <hr>
-                    <button class="btn btn-primary float-end">Place Order</button>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <hr>
+                        <button type="submit" class="btn btn-primary float-end">Place Order</button>
+                    </div>
                 </div>
             </div>
         </div>
-</div>
+    </form>
 </div>
 @endsection

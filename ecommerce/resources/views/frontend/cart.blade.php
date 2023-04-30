@@ -33,7 +33,7 @@ My Cart
                 </div>
                 <div class="col-md-3">
                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                    @if($item->Category->qty > $item->prod_qty)
+                    @if($item->Category->qty >= $item->prod_qty)
                     <label for="Quantity">Quantity</label>
                     <div class="input-group text-center mb-3" style="width:138px;">
                         <button class="input-group-text changeQuantity decrement-btn">-</button>
