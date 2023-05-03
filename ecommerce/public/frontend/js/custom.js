@@ -99,7 +99,7 @@ $(document).ready(function () {
             url: "update-cart",
             data: data,
             success: function (response) {
-                // window.location.reload();
+                window.location.reload();
             },
         });
     });
