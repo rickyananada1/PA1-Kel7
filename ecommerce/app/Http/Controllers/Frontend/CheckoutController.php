@@ -29,10 +29,18 @@ class CheckoutController extends Controller
         $order->phone = $request->input('phone');
         $order->address = $request->input('address');
         $order->city = $request->input('city');
+
+        //To Calculate the total price
+        $total = 0;
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems_total as $prod) {
+            $total += $prod->category->selling_price;
+        }
+
+        $order->total_price = $total;
+
         $order->tracking_no = 'miracle' . rand(1111, 9999);
         $order->save();
-
-
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {

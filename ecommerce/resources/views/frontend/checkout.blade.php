@@ -58,6 +58,7 @@ Checkout
                     <div class="card-body">
                         <h6>Order Details</h6>
                         <hr>
+                        @if($cartitems->count()>0)
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -81,6 +82,11 @@ Checkout
                         <hr>
                         <button type="submit" class="btn btn-primary float-end">Place Order</button>
                     </div>
+                    @else
+                    <div class="card-body text-center">
+                        <h2>No products in cart</i></h2>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

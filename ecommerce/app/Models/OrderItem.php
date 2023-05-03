@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderItem extends Model
 {
@@ -16,4 +17,14 @@ class OrderItem extends Model
         'price',
         'qty',
     ];
+
+    /**
+     * Get tje products that Owns the orderItem
+     * 
+     * @return \Illuminate\Database\Eloquent\Relation\BelongsTo
+     */
+    public function categories(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'prod_id', 'id');
+    }
 }

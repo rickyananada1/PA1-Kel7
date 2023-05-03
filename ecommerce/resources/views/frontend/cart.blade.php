@@ -17,11 +17,12 @@ My Cart
 </div>
 
 <div class="container my-5">
-    <div class="card shadow product_data">
+    <div class="card shadow">
+        @if($cartitems->count()>0)
         <div class="card-body">
             @php $total = 0; @endphp
             @foreach($cartitems as $item)
-            <div class="row">
+            <div class="row product_data">
                 <div class="col-md-2 my-auto">
                     <img src="{{asset('assets/uploads/category/'.$item->category->image)}}" height="70px" width="auto" alt="Ini Gambar">
                 </div>
@@ -47,7 +48,6 @@ My Cart
                     <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i> Remove</button>
                 </div>
             </div>
-
             @endforeach
         </div>
         <div class="card-footer">
@@ -56,6 +56,12 @@ My Cart
             </h6>
 
         </div>
+        @else
+        <div class="card-body text-center">
+            <h2>Your <i class="fa fa-shopping-cart"> Cart is Empty</i></h2>
+            <a href="{{url('/')}}" class="btn btn-outline-primary float-end">Continue Shopping</a>
+        </div>
+        @endif
     </div>
 </div>
 
