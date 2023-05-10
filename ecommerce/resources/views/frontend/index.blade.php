@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title')
-Welcome to E-Shop
+Welcome to TOBA AGRO
 @endsection
 
 @section('content')
