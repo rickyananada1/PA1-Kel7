@@ -21,6 +21,8 @@ class CheckoutController extends Controller
 
     public function placeorder(Request $request)
     {
+        // dd($request->all());
+        // $request->validate()
         $order = new Order();
         $order->user_id = Auth::id();
         $order->fname = $request->input('fname');
@@ -32,9 +34,9 @@ class CheckoutController extends Controller
 
         //To Calculate the total price
         $total = 0;
-        $cartitems_total = Cart::where('user_id', Auth::id())->get();
-        foreach ($cartitems_total as $prod) {
-            $total += $prod->category->selling_price;
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems as $prod) {
+            $total += $prod->category->selling_price * $prod->prod_qty;
         }
 
         $order->total_price = $total;
@@ -42,7 +44,7 @@ class CheckoutController extends Controller
         $order->tracking_no = 'miracle' . rand(1111, 9999);
         $order->save();
 
-        $cartitems = Cart::where('user_id', Auth::id())->get();
+        // $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {
             OrderItem::create([
                 'order_id' => $order->id,

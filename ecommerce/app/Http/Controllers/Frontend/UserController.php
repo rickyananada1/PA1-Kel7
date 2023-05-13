@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $orders = OrderItem::latest()->get();
+        $orders = Order::latest()->get();
         return view('frontend.orders.index', compact('orders'));
     }
 
