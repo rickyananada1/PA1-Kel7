@@ -19,7 +19,7 @@ Welcome to TOBA AGRO
                     <div class="card-body">
                         <h5>{{$prod->name}}</h5>
                         <p>{{$prod->description}}</p>
-                        <small>{{$prod->selling_price}}</small>
+                        <small>Rp {{$prod->selling_price}}</small>
                     </div>
                 </div>
             </div>

@@ -69,7 +69,9 @@ Checkout
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $total = 0; @endphp
                                 @foreach($cartitems as $item)
+                                @php $total += $item->category->selling_price*$item->prod_qty; @endphp
                                 <tr>
                                     <td> {{ $item->category->name }}</td>
                                     <td> {{ $item->prod_qty}}</td>
@@ -79,6 +81,7 @@ Checkout
                                 @endforeach
                             </tbody>
                         </table>
+                        <h4 class="px-2">Grand Total: <span class="float-end">Rp {{ $total }} </span></h4>
                         <hr>
                         <button type="submit" class="btn btn-primary float-end">Place Order</button>
                     </div>

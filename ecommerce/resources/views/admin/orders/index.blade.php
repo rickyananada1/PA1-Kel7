@@ -10,14 +10,16 @@ Orders
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="text-white">New Orders </h4>
+                    <h4 class="text-white">New Orders
+                        <a href="{{'order-history'}}" class="btn btn-warning float-right">Order History</a>
+                    </h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Order Date</th>
-                                <!-- <th>Tracking Number</th> -->
+                                <th>Tracking Number</th>
                                 <!-- <th>Qty</th> -->
                                 <th>Total Price</th>
                                 <th>Action</th>
@@ -28,12 +30,12 @@ Orders
                             @foreach($orders as $item)
                             <tr>
                                 <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-                                <!-- <td>{{$item->tracking_no}}</td> -->
+                                <td>{{$item->tracking_no}}</td>
                                 <!-- <td>{{$item->qty}}</td> -->
                                 <td>Rp {{$item->total_price}}</td>
                                 <td>{{$item->status == '0' ? 'pending' : 'completed'}}</td>
                                 <td>
-                                    <a href="{{route('order.show', $item->id)}}" class="btn btn-primary">View</a>
+                                    <a href="{{url('admin/view-order/'. $item->id)}}" class="btn btn-primary">View</a>
                                 </td>
                             </tr>
                             @endforeach

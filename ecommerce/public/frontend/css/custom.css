@@ -23,3 +23,18 @@
     font-size: 14px;
     padding: 5px !important;
 }
+
+.whatsapp-chat {
+    bottom: 10px;
+    left: 10px;
+    position: fixed;
+}
+
+.search-bar {
+    width: 40%;
+    margin-left: 5%;
+}
+
+.ui-menu {
+    z-index: 3500 !important;
+}

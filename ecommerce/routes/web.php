@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ use App\Http\Controllers\Frontend\UserController;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
+
+Route::get('product-list', [FrontendController::class, 'productlistAjax']);
+Route::get('searchproduct', [FrontendController::class, 'searchproduct']);
+
 
 Auth::routes();
 
@@ -52,8 +57,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-category/{id}', [CategoryController::class, 'update']);
     Route::get('delete-category/{id}', [CategoryController::class, 'destroy']);
 
-    Route::get('users', [FrontendController::class, 'users']);
 
     Route::get('orders', [OrderController::class, 'index']);
-    Route::get('orders/{order}', [OrderController::class, 'show'])->name('order.show');
+    // Route::get('orders/{order}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('admin/view-order/{id}', [OrderController::class, 'view']);
+    Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
+    Route::get('order-history', [OrderController::class, 'orderhistory']);
+
+    Route::get('users', [DashboardController::class, 'users']);
+    Route::get('view-user/{id}', [DashboardController::class, 'viewuser']);
 });

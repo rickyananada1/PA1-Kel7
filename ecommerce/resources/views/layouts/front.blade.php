@@ -18,6 +18,8 @@
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
@@ -28,10 +30,35 @@
         @yield('content')
     </div>
 
+
+    <div class="whatsapp-chat">
+        <a href="https://wa.me/6287728455891?text=Berikut%20bukti%20pembayaran%20pesanan%20saya" target="_blank">
+            <img src="{{asset('assets/images/wa.png')}}" alt="whatsapp-logo" height="60px" width="60px">
+        </a>
+    </div>
+
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script src="{{ asset('frontend/js/sweetalert.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function(response) {
+                // console.log(response);
+                startAutoComplete(response);
+            }
+        });
+
+        function startAutoComplete(availableTags) {
+            $("#search_product").autocomplete({
+                source: availableTags
+            });
+        }
+    </script>
 
     @if(session('status'))
     <script>

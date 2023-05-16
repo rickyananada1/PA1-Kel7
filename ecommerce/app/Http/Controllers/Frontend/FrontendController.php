@@ -22,10 +22,37 @@ class FrontendController extends Controller
                 $category = Category::where('slug', $prod_slug)->first();
                 return view('frontend.products.view', compact('category'));
             } else {
-                return redirect('/')->with('status', "The link was broken");
+                return redirect()->back()->with("status", "No products matched your search");
             }
         } else {
             return redirect('/')->with('status', "No such product found");
+        }
+    }
+
+    public function productlistAjax()
+    {
+        $category = Category::select('name')->where('status', '1')->get();
+        $data = [];
+
+        foreach ($category as $item) {
+            $data[] = $item['name'];
+        }
+        return $data;
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $searched_product = $request->product_name;
+
+        if ($searched_product != "") {
+            $category = Category::where("name", "LIKE", "%$searched_product%")->first();
+            if ($category) {
+                return redirect('category/' . $category->slug . '/' . $category->slug);
+            } else {
+                return redirect()->back()->with("status", "No products matched your search");
+            }
+        } else {
+            return redirect()->back();
         }
     }
 }

@@ -11,7 +11,7 @@ My Orders
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="text-white">Orders View
-                        <a href="{{url('my-orders')}}" class="btn btn-warning text-white float-end">Back</a>
+                        <a href="{{url('my-orders')}}" class="btn btn-warning text-black float-end">Back</a>
                     </h4>
                 </div>
                 <div class=" card-body">
@@ -65,8 +65,9 @@ My Orders
                                     @endforeach
                                 </tbody>
                             </table>
-                            <h4 class="px-2">Grand Total: <span class="float-end">Rp {{ $total }}</span></h4>
-
+                            <h4 class="px-2">Grand Total: <span class="float-end">Rp {{ $total }}</span></h4><br>
+                            <span>Bayarlah total harga pesanan ke rekening <b>Mandiri</b> ini, dan kirim bukti pembayaran nya melalui <b>WhatsApp</b></span>
+                            <button class="btn btn-primary w-100 mt-3"> 1070018497232</button>
                         </div>
                     </div>
 
