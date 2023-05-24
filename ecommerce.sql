@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 03, 2023 at 01:15 AM
+-- Generation Time: May 24, 2023 at 01:26 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crudd`
+-- Database: `ecommerce`
 --
 
 -- --------------------------------------------------------
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carts` (
   `id` bigint UNSIGNED NOT NULL,
-  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_qty` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_qty` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -44,16 +44,16 @@ CREATE TABLE `carts` (
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `selling_price` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `qty` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selling_price` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qty` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
   `popular` tinyint NOT NULL DEFAULT '0',
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_descrip` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_descrip` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keywords` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -64,8 +64,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `selling_price`, `qty`, `status`, `popular`, `image`, `meta_title`, `meta_descrip`, `meta_keywords`, `created_at`, `updated_at`) VALUES
-(1, 'Kemiri', 'Kemiri', 'Kemiri', '15000', '0', 1, 0, '1682989851.jpg', 'Kemiri', 'Kemiri', 'Kemiri', '2023-05-01 18:10:51', '2023-05-02 09:16:35'),
-(2, 'Kacang merah', 'Kacang merah', 'Kacang merah', '20000', '8', 1, 0, '1683010538.jpg', 'Kacang merah', 'Kacang merah', 'Kacang merah', '2023-05-01 23:55:38', '2023-05-01 23:56:46');
+(1, 'Kemiri', 'Kemiri', 'Kemiri', '15000', '3', 1, 0, '1682989851.jpg', 'Kemiri', 'Kemiri', 'Kemiri', '2023-05-01 18:10:51', '2023-05-24 05:50:32'),
+(2, 'Kacang merah', 'Kacang merah', 'Kacang merah', '20000', '10', 1, 0, '1683010538.jpg', 'Kacang merah', 'Kacang merah', 'Kacang merah', '2023-05-01 23:55:38', '2023-05-14 23:19:27');
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2023_04_21_055224_create_carts_table', 4),
 (8, '2023_04_27_134800_create_orders_table', 5),
 (9, '2023_04_27_143032_create_order_items_table', 6),
-(10, '2023_04_27_143432_create_order_items_table', 7);
+(10, '2023_04_27_143432_create_order_items_table', 7),
+(11, '2023_05_22_034352_create_ratings_table', 8);
 
 -- --------------------------------------------------------
 
@@ -119,17 +120,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint UNSIGNED NOT NULL,
-  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_price` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `message` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tracking_no` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fname` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lname` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_price` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `message` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tracking_no` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -139,9 +140,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `fname`, `lname`, `email`, `phone`, `address`, `city`, `total_price`, `status`, `message`, `tracking_no`, `created_at`, `updated_at`) VALUES
-(1, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '15000', '0', NULL, 'miracle9107', '2023-05-01 18:24:39', '2023-05-01 18:24:39'),
-(2, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '20000', '0', NULL, 'miracle9152', '2023-05-01 23:56:46', '2023-05-01 23:56:46'),
-(3, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '15000', '0', NULL, 'miracle6410', '2023-05-02 09:16:35', '2023-05-02 09:16:35');
+(1, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '15000', '1', NULL, 'miracle4097', '2023-05-24 05:50:32', '2023-05-24 05:52:45');
 
 -- --------------------------------------------------------
 
@@ -151,11 +150,11 @@ INSERT INTO `orders` (`id`, `user_id`, `fname`, `lname`, `email`, `phone`, `addr
 
 CREATE TABLE `order_items` (
   `id` bigint UNSIGNED NOT NULL,
-  `order_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `qty` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `order_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qty` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -165,9 +164,7 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `prod_id`, `qty`, `price`, `status`, `created_at`, `updated_at`) VALUES
-(1, '1', '1', '3', '15000', '0', '2023-05-01 18:24:39', '2023-05-01 18:24:39'),
-(2, '2', '2', '2', '20000', '0', '2023-05-01 23:56:46', '2023-05-01 23:56:46'),
-(3, '3', '1', '4', '15000', '0', '2023-05-02 09:16:35', '2023-05-02 09:16:35');
+(1, '1', '1', '1', '15000', '0', '2023-05-24 05:50:32', '2023-05-24 05:50:32');
 
 -- --------------------------------------------------------
 
@@ -195,6 +192,21 @@ CREATE TABLE `personal_access_tokens` (
   `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ratings`
+--
+
+CREATE TABLE `ratings` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stars_rated` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -285,6 +297,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `ratings`
+--
+ALTER TABLE `ratings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -299,7 +317,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -317,24 +335,30 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ratings`
+--
+ALTER TABLE `ratings`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
