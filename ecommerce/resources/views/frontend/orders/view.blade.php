@@ -77,4 +77,9 @@ My Orders
         </div>
     </div>
 </div>
+<div class="whatsapp-chat">
+    <a href="https://wa.me/6287728455891?text=Berikut%20bukti%20pembayaran%20pesanan%20saya%0ANama:%0AAlamat:" target="_blank">
+        <img src="{{asset('assets/images/wa.png')}}" alt="whatsapp-logo" height="60px" width="60px">
+    </a>
+</div>
 @endsection

@@ -31,11 +31,7 @@
     </div>
 
 
-    <div class="whatsapp-chat">
-        <a href="https://wa.me/6287728455891?text=Berikut%20bukti%20pembayaran%20pesanan%20saya" target="_blank">
-            <img src="{{asset('assets/images/wa.png')}}" alt="whatsapp-logo" height="60px" width="60px">
-        </a>
-    </div>
+
 
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>

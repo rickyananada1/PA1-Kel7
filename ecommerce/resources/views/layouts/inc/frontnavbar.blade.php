@@ -109,10 +109,10 @@
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">TOBA AGRO</a>
         <div class="search-bar">
-            <form action="{{'searchproduct'}}" method="GET">
+            <form action="" method="GET">
                 @csrf
                 <div class="input-group">
-                    <input type="search" class="form-control" id="search_product" name="product_name" required placeholder="Search products" aria-describedby="basic-addon1">
+                    <input type="search" class="form-control" id="search_product" name="product_name" placeholder="Search products" aria-describedby="basic-addon1">
                     <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
                 </div>
             </form>

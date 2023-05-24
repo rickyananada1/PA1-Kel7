@@ -74,7 +74,7 @@ My Orders
                                     @method('PUT')
                                     <select class="form-select" name="order_status">
                                         <option {{ $orders->status == '0'? 'selected':'' }} value="0">Pending</option>
-                                        <option {{ $orders->status == ''? 'selected':'' }} value="1">Completed</option>
+                                        <option {{ $orders->status == '1'? 'selected':'' }} value="1">Completed</option>
                                     </select>
                                     <button type="submit" class="btn btn-primary mt-3 float-end">Update</button>
                                 </form>

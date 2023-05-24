@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{orderId}', [UserController::class, 'view']);
+
+    Route::post('add-rating', [RatingController::class, 'add']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
