@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 24, 2023 at 01:26 PM
+-- Generation Time: May 30, 2023 at 04:12 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -45,16 +45,16 @@ CREATE TABLE `carts` (
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `selling_price` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `qty` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
   `popular` tinyint NOT NULL DEFAULT '0',
   `image` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_descrip` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_keywords` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_descrip` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keywords` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -64,8 +64,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `selling_price`, `qty`, `status`, `popular`, `image`, `meta_title`, `meta_descrip`, `meta_keywords`, `created_at`, `updated_at`) VALUES
-(1, 'Kemiri', 'Kemiri', 'Kemiri', '15000', '3', 1, 0, '1682989851.jpg', 'Kemiri', 'Kemiri', 'Kemiri', '2023-05-01 18:10:51', '2023-05-24 05:50:32'),
-(2, 'Kacang merah', 'Kacang merah', 'Kacang merah', '20000', '10', 1, 0, '1683010538.jpg', 'Kacang merah', 'Kacang merah', 'Kacang merah', '2023-05-01 23:55:38', '2023-05-14 23:19:27');
+(1, 'Kemiri', 'Kemiri', 'Kemiri', '15000', '89999', 1, 0, '1682989851.jpg', 'Kemiri', 'Kemiri', 'Kemiri', '2023-05-01 18:10:51', '2023-05-30 06:57:37'),
+(2, 'Kacang merah', 'Kacang merah', 'Kacang merah', '20000', '99999', 1, 0, '1683010538.jpg', 'Kacang merah', 'Kacang merah', 'Kacang merah', '2023-05-01 23:55:38', '2023-05-27 07:48:12'),
+(4, 'Kopi', 'Kopi', 'Kopi', '13000', '99999', 1, 0, '1685462867.jpg', NULL, NULL, NULL, '2023-05-30 09:07:47', '2023-05-30 09:09:07');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2023_04_27_134800_create_orders_table', 5),
 (9, '2023_04_27_143032_create_order_items_table', 6),
 (10, '2023_04_27_143432_create_order_items_table', 7),
-(11, '2023_05_22_034352_create_ratings_table', 8);
+(11, '2023_05_22_034352_create_ratings_table', 8),
+(13, '2023_05_27_132206_create_reviews_table', 9);
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `fname`, `lname`, `email`, `phone`, `address`, `city`, `total_price`, `status`, `message`, `tracking_no`, `created_at`, `updated_at`) VALUES
-(1, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '15000', '1', NULL, 'miracle4097', '2023-05-24 05:50:32', '2023-05-24 05:52:45');
+(1, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '30000', '1', NULL, 'miracle7634', '2023-05-27 07:52:35', '2023-05-30 03:00:47'),
+(2, '9', 'Jelita', 'Sirait', 'jelita@gmail.com', '087728455891', 'Toba', 'Porsea', '30000', '0', NULL, 'miracle2250', '2023-05-29 21:52:28', '2023-05-29 21:52:28'),
+(3, '2', 'Miracle', 'Caliesta', 'poirot056@gmail.com', '087728455891', 'Toba', 'Porsea', '150000000', '0', NULL, 'miracle1129', '2023-05-30 06:57:37', '2023-05-30 06:57:37');
 
 -- --------------------------------------------------------
 
@@ -164,7 +168,9 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `prod_id`, `qty`, `price`, `status`, `created_at`, `updated_at`) VALUES
-(1, '1', '1', '1', '15000', '0', '2023-05-24 05:50:32', '2023-05-24 05:50:32');
+(1, '1', '1', '2', '15000', '0', '2023-05-27 07:52:35', '2023-05-27 07:52:35'),
+(2, '2', '1', '2', '15000', '0', '2023-05-29 21:52:28', '2023-05-29 21:52:28'),
+(3, '3', '1', '10000', '15000', '0', '2023-05-30 06:57:37', '2023-05-30 06:57:37');
 
 -- --------------------------------------------------------
 
@@ -204,12 +210,41 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `ratings` (
   `id` bigint UNSIGNED NOT NULL,
-  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `stars_rated` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stars_rated` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ratings`
+--
+
+INSERT INTO `ratings` (`id`, `user_id`, `prod_id`, `stars_rated`, `created_at`, `updated_at`) VALUES
+(1, '2', '1', '1', '2023-05-30 03:01:45', '2023-05-30 03:01:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_review` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `user_id`, `prod_id`, `user_review`, `created_at`, `updated_at`) VALUES
+(1, '2', '1', 'tes', '2023-05-30 03:01:39', '2023-05-30 03:01:39');
 
 -- --------------------------------------------------------
 
@@ -239,7 +274,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `lname`, `phone`, `address`, `city`, `role_as`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Carlos Marpaung', 'calmrp1412@gmail.com', NULL, '$2y$10$LSdomp3LmYy9mAyfu1MdC.k4owO1urdFX2F5/c3RAdhP4s0U6ipOK', NULL, NULL, NULL, NULL, 1, NULL, '2023-05-01 23:52:16', '2023-05-01 23:52:16'),
-(2, 'Miracle', 'poirot056@gmail.com', NULL, '$2y$10$TfJghJaw941cpUyxxYVz1.8K5ro.7vspi0.ZWz6.dq5VDvSWZlpqW', 'Caliesta', '087728455891', 'Toba', 'Porsea', 0, NULL, '2023-04-12 22:44:51', '2023-04-27 08:31:59');
+(2, 'Miracle', 'poirot056@gmail.com', NULL, '$2y$10$TfJghJaw941cpUyxxYVz1.8K5ro.7vspi0.ZWz6.dq5VDvSWZlpqW', 'Caliesta', '087728455891', 'Toba', 'Porsea', 0, NULL, '2023-04-12 22:44:51', '2023-04-27 08:31:59'),
+(9, 'Jelita', 'jelita@gmail.com', NULL, '$2y$10$XcRmLi4A.3gXM54QNhDQPe4PPVQ3XE2mclPJTxqAvZHaPbBWFbXuG', 'Sirait', '087728455891', 'Toba', 'Porsea', 0, NULL, '2023-05-29 21:49:56', '2023-05-29 21:52:28');
 
 --
 -- Indexes for dumped tables
@@ -303,6 +339,12 @@ ALTER TABLE `ratings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -317,13 +359,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -335,19 +377,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -359,13 +401,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
