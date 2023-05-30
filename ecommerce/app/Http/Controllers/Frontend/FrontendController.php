@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Rating;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -23,8 +25,16 @@ class FrontendController extends Controller
         if (Category::where('slug', $cate_slug)->exists()) {
             if (Category::where('slug', $prod_slug)->exists()) {
                 $category = Category::where('slug', $prod_slug)->first();
-                // $ratings = Rating::where('prod_id', $category->id)->get();
-                return view('frontend.products.view', compact('category'));
+                $ratings = Rating::where('prod_id', $category->id)->get();
+                $rating_sum = Rating::where('prod_id', $category->id)->sum('stars_rated');
+                $user_rating = Rating::where('prod_id', $category->id)->where('user_id', Auth::id())->first();
+                $reviews = Review::where('prod_id', $category->id)->get();
+                if ($ratings->count() > 0) {
+                    $rating_value = $rating_sum / $ratings->count();
+                } else {
+                    $rating_value = 0;
+                }
+                return view('frontend.products.view', compact('category', 'ratings', 'reviews', 'rating_value', 'user_rating'));
             } else {
                 return redirect()->back()->with("status", "The link you followed was broken");
             }

@@ -1,5 +1,5 @@
 .carousel-item img {
-    max-width: 1400px;
+    max-width: 1550px;
     height: 300px;
 }
 
@@ -66,3 +66,7 @@
 }
 
 /* End of Star Rating */
+
+.checked {
+    color: #ffd900;
+}

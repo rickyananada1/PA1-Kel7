@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\Frontend\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,8 @@ use App\Http\Controllers\Frontend\RatingController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/home', [FrontendController::class, 'index']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
 Route::get('product-list', [FrontendController::class, 'productlistAjax']);
@@ -48,6 +49,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('view-order/{orderId}', [UserController::class, 'view']);
 
     Route::post('add-rating', [RatingController::class, 'add']);
+
+    Route::get('add-review/{category_slug}/userreview', [ReviewController::class, 'add']);
+    Route::post('add-review', [ReviewController::class, 'create']);
+    Route::get('edit-review/{product_slug}/userreview', [ReviewController::class, 'edit']);
+    Route::put('update-review', [ReviewController::class, 'update']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

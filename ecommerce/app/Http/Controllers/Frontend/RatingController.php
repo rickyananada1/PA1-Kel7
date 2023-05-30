@@ -25,6 +25,7 @@ class RatingController extends Controller
         $verified_purchase = Order::where('user_id', Auth::id())
             ->join('order_items', 'orders.id', '=', 'order_items.order_id')
             ->where('order_items.prod_id', $category_id)
+            ->where('orders.status', 1)
             ->first();
 
         if ($verified_purchase == null) {
@@ -42,6 +43,6 @@ class RatingController extends Controller
                 'stars_rated' => $stars_rated
             ]);
         }
-        return redirect()->back()->with('status', "Thank you for your rated");
+        return redirect()->back()->with('status', "Thank you for rating this product");
     }
 }
