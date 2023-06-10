@@ -82,4 +82,5 @@ My Orders
         <img src="{{asset('assets/images/wa.png')}}" alt="whatsapp-logo" height="60px" width="60px">
     </a>
 </div>
+
 @endsection

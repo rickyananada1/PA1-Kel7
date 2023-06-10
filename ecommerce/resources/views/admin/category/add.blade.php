@@ -11,19 +11,19 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Slug</label>
-                    <input type="text" class="form-control" name="slug">
+                    <input type="text" class="form-control" name="slug" required>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Description</label>
-                    <textarea name="description" id="" rows="3" class="form-control"></textarea>
+                    <textarea name="description" id="" rows="3" class="form-control" required></textarea>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Status</label>
-                    <input type="checkbox" name="status">
+                    <input type="checkbox" name="status" required>
                 </div>
                 <!-- <div class="col-md-6 mb-3">
                     <label for="">Popular</label>

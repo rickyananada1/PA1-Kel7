@@ -12,7 +12,8 @@
         @yield('title')
     </title>
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
@@ -22,6 +23,12 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* body {
+            background: rgb(88, 88, 88);
+            background: linear-gradient(90deg, rgba(88, 88, 88, 1) 24%, rgba(169, 169, 169, 1) 79%, rgba(208, 208, 208, 1) 100%);
+        } */
+    </style>
 </head>
 
 <body>
@@ -56,10 +63,10 @@
         }
     </script>
 
-    @if(session('status'))
-    <script>
-        swal("{{session('status')}}");
-    </script>
+    @if (session('status'))
+        <script>
+            swal("{{ session('status') }}");
+        </script>
     @endif
     @yield('scripts')
 </body>

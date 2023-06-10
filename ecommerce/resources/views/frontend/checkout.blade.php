@@ -31,23 +31,23 @@ Checkout
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
-                                <input type="text" class="form-control" value="{{ Auth::user()->lname }}" name="lname" placeholder="Enter Last Name">
+                                <input type="text" class="form-control" value="{{ Auth::user()->lname }}" name="lname" placeholder="Enter Last Name" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="">Email</label>
-                                <input type="text" class="form-control" value="{{ Auth::user()->email }}" name="email" placeholder="Enter Email">
+                                <input type="text" class="form-control" value="{{ Auth::user()->email }}" name="email" placeholder="Enter Email" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="">Phone Number</label>
-                                <input type="text" class="form-control" value="{{ Auth::user()->phone }}" name="phone" placeholder="Enter Phone Number">
+                                <input type="text" class="form-control" value="{{ Auth::user()->phone }}" name="phone" placeholder="Enter Phone Number" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="">Address</label>
-                                <input type="text" class="form-control" value="{{ Auth::user()->address }}" name="address" placeholder="Enter Address">
+                                <input type="text" class="form-control" value="{{ Auth::user()->address }}" name="address" placeholder="Enter Address" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="">City</label>
-                                <input type="text" class="form-control" value="{{ Auth::user()->city }}" name="city" placeholder="Enter City">
+                                <input type="text" class="form-control" value="{{ Auth::user()->city }}" name="city" placeholder="Enter City" required>
                             </div>
                         </div>
                     </div>
