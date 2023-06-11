@@ -6,8 +6,8 @@
         <h4>Products Pages</h4>
         <hr>
     </div>
-    <div class="card-body">
-        <table class="table table-bordered table-striped">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped ">
             <thead>
                 <tr>
                     <th>Id</th>

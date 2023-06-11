@@ -16,10 +16,6 @@ class Category extends Model
         'description',
         'selling_price',
         'status',
-        'popular',
         'image',
-        'meta_title',
-        'meta_descrip',
-        'meta_keyword',
     ];
 }

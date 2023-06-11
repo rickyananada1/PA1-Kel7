@@ -23,9 +23,6 @@ class CreateCategoriesTable extends Migration
             $table->tinyInteger('popular')->default('0');
             $table->string('image');
             $table->string('qty');
-            $table->string('meta_title');
-            $table->string('meta_descrip');
-            $table->string('meta_keyword');
             $table->timestamps();
         });
     }

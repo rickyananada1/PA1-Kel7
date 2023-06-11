@@ -100,6 +100,7 @@
                                 <button class="input-group-text decrement-btn">-</button>
                                 <input type="text" name="quantity" class="form-control qty-input text-center" value="1" max="99999">
                                 <button class="input-group-text increment-btn">+</button>
+                                <h4 style="display: inline-block; margin-left: 5px;" class="fw-bold">kg</h4>
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -119,12 +120,12 @@
                                 Rate this product
                             </button>
                             <?php
-                                $user_rating = App\Models\Rating::where('prod_id',$category->id)->where('user_id',Auth::id())->first();
+                            $user_rating = App\Models\Rating::where('prod_id', $category->id)->where('user_id', Auth::id())->first();
                             ?>
-                            @if($user_rating)    
-                                <a href="{{url('add-review/'.$category->slug.'/userreview')}}" class="btn btn-primary">
-                                    Write a review
-                                </a>
+                            @if($user_rating)
+                            <a href="{{url('add-review/'.$category->slug.'/userreview')}}" class="btn btn-primary">
+                                Write a review
+                            </a>
                             @endif
                         </div>
                         <div class="row py-3">
